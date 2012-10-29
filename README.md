@@ -42,10 +42,10 @@ A free iOS UI framework, providing more useful features, based on UIKit.
 #### Download Manager
 * 多队列, 多任务下载 (暂时为单线程).
 
-### 进行中
-
 #### HUD
-* 基于 [MBProgressHUD](https://github.com/jdg/MBProgressHUD). (感谢原作者!)
+* 因为 [MBProgressHUD](https://github.com/jdg/MBProgressHUD) 做得已经很棒了, 我就不献丑好啦... =v= (感谢原作者!)
+
+### 进行中
 
 #### Input Table View
 * 可进行六种输入: Text Field / Text View / Switch / Image / Picker / Subtable.

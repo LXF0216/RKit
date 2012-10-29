@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAD9E2A5163D78C80088F5A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD9E2A4163D78C80088F5A3 /* UIKit.framework */; };
+		FAD9E2A7163D78C80088F5A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD9E2A6163D78C80088F5A3 /* Foundation.framework */; };
+		FAD9E2A9163D78C80088F5A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD9E2A8163D78C80088F5A3 /* CoreGraphics.framework */; };
+		FAD9E2AF163D78C80088F5A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAD9E2AD163D78C80088F5A3 /* InfoPlist.strings */; };
+		FAD9E2B1163D78C80088F5A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9E2B0163D78C80088F5A3 /* main.m */; };
+		FAD9E2B5163D78C80088F5A3 /* RAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9E2B4163D78C80088F5A3 /* RAppDelegate.m */; };
+		FAD9E2B7163D78C80088F5A3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD9E2B6163D78C80088F5A3 /* Default.png */; };
+		FAD9E2B9163D78C80088F5A3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD9E2B8163D78C80088F5A3 /* Default@2x.png */; };
+		FAD9E2BB163D78C80088F5A3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD9E2BA163D78C80088F5A3 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FAD9E2A0163D78C80088F5A3 /* RKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAD9E2A4163D78C80088F5A3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FAD9E2A6163D78C80088F5A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAD9E2A8163D78C80088F5A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FAD9E2AC163D78C80088F5A3 /* RKitDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RKitDemo-Info.plist"; sourceTree = "<group>"; };
+		FAD9E2AE163D78C80088F5A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAD9E2B0163D78C80088F5A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAD9E2B2163D78C80088F5A3 /* RKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RKitDemo-Prefix.pch"; sourceTree = "<group>"; };
+		FAD9E2B3163D78C80088F5A3 /* RAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RAppDelegate.h; sourceTree = "<group>"; };
+		FAD9E2B4163D78C80088F5A3 /* RAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RAppDelegate.m; sourceTree = "<group>"; };
+		FAD9E2B6163D78C80088F5A3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		FAD9E2B8163D78C80088F5A3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		FAD9E2BA163D78C80088F5A3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAD9E29D163D78C80088F5A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAD9E2A5163D78C80088F5A3 /* UIKit.framework in Frameworks */,
+				FAD9E2A7163D78C80088F5A3 /* Foundation.framework in Frameworks */,
+				FAD9E2A9163D78C80088F5A3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAD9E295163D78C80088F5A3 = {
+			isa = PBXGroup;
+			children = (
+				FAD9E2AA163D78C80088F5A3 /* RKitDemo */,
+				FAD9E2A3163D78C80088F5A3 /* Frameworks */,
+				FAD9E2A1163D78C80088F5A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAD9E2A1163D78C80088F5A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAD9E2A0163D78C80088F5A3 /* RKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAD9E2A3163D78C80088F5A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAD9E2A4163D78C80088F5A3 /* UIKit.framework */,
+				FAD9E2A6163D78C80088F5A3 /* Foundation.framework */,
+				FAD9E2A8163D78C80088F5A3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAD9E2AA163D78C80088F5A3 /* RKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FAD9E2B3163D78C80088F5A3 /* RAppDelegate.h */,
+				FAD9E2B4163D78C80088F5A3 /* RAppDelegate.m */,
+				FAD9E2AB163D78C80088F5A3 /* Supporting Files */,
+			);
+			path = RKitDemo;
+			sourceTree = "<group>";
+		};
+		FAD9E2AB163D78C80088F5A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAD9E2AC163D78C80088F5A3 /* RKitDemo-Info.plist */,
+				FAD9E2AD163D78C80088F5A3 /* InfoPlist.strings */,
+				FAD9E2B0163D78C80088F5A3 /* main.m */,
+				FAD9E2B2163D78C80088F5A3 /* RKitDemo-Prefix.pch */,
+				FAD9E2B6163D78C80088F5A3 /* Default.png */,
+				FAD9E2B8163D78C80088F5A3 /* Default@2x.png */,
+				FAD9E2BA163D78C80088F5A3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAD9E29F163D78C80088F5A3 /* RKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAD9E2BE163D78C80088F5A3 /* Build configuration list for PBXNativeTarget "RKitDemo" */;
+			buildPhases = (
+				FAD9E29C163D78C80088F5A3 /* Sources */,
+				FAD9E29D163D78C80088F5A3 /* Frameworks */,
+				FAD9E29E163D78C80088F5A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RKitDemo;
+			productName = RKitDemo;
+			productReference = FAD9E2A0163D78C80088F5A3 /* RKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAD9E297163D78C80088F5A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = R;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Seymour Dev";
+			};
+			buildConfigurationList = FAD9E29A163D78C80088F5A3 /* Build configuration list for PBXProject "RKitDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAD9E295163D78C80088F5A3;
+			productRefGroup = FAD9E2A1163D78C80088F5A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAD9E29F163D78C80088F5A3 /* RKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAD9E29E163D78C80088F5A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAD9E2AF163D78C80088F5A3 /* InfoPlist.strings in Resources */,
+				FAD9E2B7163D78C80088F5A3 /* Default.png in Resources */,
+				FAD9E2B9163D78C80088F5A3 /* Default@2x.png in Resources */,
+				FAD9E2BB163D78C80088F5A3 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAD9E29C163D78C80088F5A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAD9E2B1163D78C80088F5A3 /* main.m in Sources */,
+				FAD9E2B5163D78C80088F5A3 /* RAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAD9E2AD163D78C80088F5A3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAD9E2AE163D78C80088F5A3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAD9E2BC163D78C80088F5A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FAD9E2BD163D78C80088F5A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAD9E2BF163D78C80088F5A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RKitDemo/RKitDemo-Prefix.pch";
+				INFOPLIST_FILE = "RKitDemo/RKitDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FAD9E2C0163D78C80088F5A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RKitDemo/RKitDemo-Prefix.pch";
+				INFOPLIST_FILE = "RKitDemo/RKitDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAD9E29A163D78C80088F5A3 /* Build configuration list for PBXProject "RKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAD9E2BC163D78C80088F5A3 /* Debug */,
+				FAD9E2BD163D78C80088F5A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAD9E2BE163D78C80088F5A3 /* Build configuration list for PBXNativeTarget "RKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAD9E2BF163D78C80088F5A3 /* Debug */,
+				FAD9E2C0163D78C80088F5A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAD9E297163D78C80088F5A3 /* Project object */;
+}
