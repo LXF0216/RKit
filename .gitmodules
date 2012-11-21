@@ -1,0 +1,3 @@
+[submodule "RDownloadManager"]
+	path = RDownloadManager
+	url = git@github.com:AlexRezit/RDownloadManager.git
