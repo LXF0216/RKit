@@ -1,3 +1,6 @@
 [submodule "RTableViewController"]
 	path = RTableViewController
 	url = git@github.com:AlexRezit/RTableViewController.git
+[submodule "RFoundation"]
+	path = RFoundation
+	url = git@github.com:AlexRezit/RFoundation.git
