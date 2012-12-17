@@ -1,6 +1,3 @@
-[submodule "RDownloadManager"]
-	path = RDownloadManager
-	url = git@github.com:AlexRezit/RDownloadManager.git
 [submodule "RTableViewController"]
 	path = RTableViewController
 	url = git@github.com:AlexRezit/RTableViewController.git
