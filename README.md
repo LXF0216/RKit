@@ -23,22 +23,3 @@ Via:
 * [Alipay | 支付宝](https://me.alipay.com/alexrezit)
 * [Amazon Wishlist | 亚马逊心愿单](http://www.amazon.cn/wishlist/P8YMPIX8QFTN/)
 
-# API Reference | API 参考
-
-## RFoundation
-
-### NSString+URLCoding
-
-```
-- (NSString *)URLEncodedString;
-- (NSString *)URLDecodedString;
-
-+ (id)stringWithURLEncodedDictionary:(NSDictionary *)dictionary;
-- (NSDictionary *)URLDecodedDictionary;
-```
-
-## RDownloadManager (submodule)
-
-See [RDownloadManager](https://github.com/AlexRezit/RDownloadManager).
-
-
