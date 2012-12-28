@@ -6,9 +6,11 @@
 //  Copyright (c) 2012 Seymour Dev. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "UIImageView+LoadWebImage.h"
 
 #define kImageViewLoadWebImageDefaultRetryCount 3
+#define kRWebImageLoadAnimationKey @"RWebImageLoadAnimationKey"
 
 @implementation UIImageView (LoadWebImage)
 
@@ -30,6 +32,9 @@
             UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL];
             if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    CATransition *animation = [CATransition animation];
+                    animation.type = kCATransitionFade;
+                    [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
                     self.image = image;
                 });
                 break;
@@ -51,6 +56,9 @@
             UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL forceRefresh:forceRefresh];
             if (image) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    CATransition *animation = [CATransition animation];
+                    animation.type = kCATransitionFade;
+                    [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
                     self.image = image;
                 });
                 break;
