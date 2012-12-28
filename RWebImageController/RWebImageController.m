@@ -17,6 +17,7 @@
 
 @property (nonatomic, assign) sqlite3 *database;
 
+- (void)createDirectory;
 - (NSString *)pathForDatabaseFile;
 - (NSString *)pathForImageWithHash:(NSString *)hash;
 
@@ -105,6 +106,20 @@
 
 #pragma mark - Database control
 
+- (void)createDirectory
+{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = documentPaths[0];
+    NSString *imageDirectory = [documentDirectory stringByAppendingPathComponent:kRWebImageDirectory];
+    BOOL isDirectory = NO;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:imageDirectory isDirectory:&isDirectory] ||
+        !isDirectory) {
+        [fileManager removeItemAtPath:imageDirectory error:nil];
+        [fileManager createDirectoryAtPath:imageDirectory withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+}
+
 - (NSString *)pathForDatabaseFile
 {
     NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -123,7 +138,10 @@
 
 - (void)loadDatabase
 {
-    sqlite3_open(self.pathForDatabaseFile.UTF8String, &database);
+    if (sqlite3_open(self.pathForDatabaseFile.UTF8String, &database) != SQLITE_OK) {
+        [self closeDatabase];
+        NSAssert(0, @"Failed to open database.");
+    }
 }
 
 - (void)closeDatabase
@@ -133,46 +151,48 @@
 
 - (void)createTable
 {
-    NSString *create = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (HASH TEXT UNIQUE PRIMARY KEY, CNAME TEXT, URL TEXT);", kRWebImageDatabaseTableName];
-    char *error;
-    if (sqlite3_exec(database, create.UTF8String, NULL, NULL, &error) != SQLITE_OK) {
-        NSAssert1(0, @"Error creating table: %s", error);
-    }
+    NSString *create = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (HASH TEXT UNIQUE PRIMARY KEY, URL TEXT);", kRWebImageDatabaseTableName];
+    dispatch_async(_operationQueue, ^{
+        char *error;
+        if (sqlite3_exec(database, create.UTF8String, NULL, NULL, &error) != SQLITE_OK) {
+            NSAssert1(0, @"Error creating table: %s", error);
+        }
+    });
 }
 
 - (void)addEntryForImageURL:(NSURL *)url withHash:(NSString *)hash
 {
-    [self loadDatabase];
-    [self createTable];
-    NSString *update = [NSString stringWithFormat:@"INSERT OR REPLACE INTO %@ (HASH, URL) VALUES (?, ?);", kRWebImageDatabaseTableName];
-    sqlite3_stmt *stmt;
-    if (sqlite3_prepare_v2(database, update.UTF8String, -1, &stmt, NULL) == SQLITE_OK) {
-        sqlite3_bind_text(stmt, 1, hash.UTF8String, -1, NULL);
-        sqlite3_bind_text(stmt, 2, url.absoluteString.UTF8String, -1, NULL);
-    }
-    if (sqlite3_step(stmt) != SQLITE_DONE) {
-        NSAssert(0, @"Error updating image.");
-    }
-    sqlite3_finalize(stmt);
-    [self closeDatabase];
+    void (^ __block writeBlock)() = Block_copy(^{
+        NSString *update = [NSString stringWithFormat:@"INSERT OR REPLACE INTO %@ (HASH, URL) VALUES (?, ?);", kRWebImageDatabaseTableName];
+        sqlite3_stmt *stmt;
+        if (sqlite3_prepare_v2(database, update.UTF8String, -1, &stmt, NULL) == SQLITE_OK) {
+            sqlite3_bind_text(stmt, 1, hash.UTF8String, -1, NULL);
+            sqlite3_bind_text(stmt, 2, url.absoluteString.UTF8String, -1, NULL);
+        }
+        if (sqlite3_step(stmt) != SQLITE_DONE) {
+            NSAssert(0, @"Error updating image.");
+        }
+        sqlite3_finalize(stmt);
+    });
+    dispatch_async(_operationQueue, writeBlock);
 }
 
 - (NSString *)pathForImageWithURL:(NSURL *)url
 {
-    [self loadDatabase];
-    [self createTable];
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE URL=?", kRWebImageDatabaseTableName];
-    sqlite3_stmt *stmt;
-    NSString *hash = nil;
-    if (sqlite3_prepare_v2(database, query.UTF8String, -1, &stmt, NULL) == SQLITE_OK) {
-        sqlite3_bind_text(stmt, 0, url.absoluteString.UTF8String, -1, NULL);
-        while (sqlite3_step(stmt) == SQLITE_ROW) {
-            hash = @((char *)sqlite3_column_text(stmt, 1));
+    __block NSString *hash = nil;
+    void (^ __block readBlock)() = Block_copy(^{
+        NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE URL = ?", kRWebImageDatabaseTableName];
+        sqlite3_stmt *stmt;
+        if (sqlite3_prepare_v2(database, query.UTF8String, -1, &stmt, NULL) == SQLITE_OK) {
+            sqlite3_bind_text(stmt, 1, url.absoluteString.UTF8String, -1, NULL);
+            while (sqlite3_step(stmt) == SQLITE_ROW) {
+                hash = @((char *)sqlite3_column_text(stmt, 0));
+            }
+        } else {
+            NSAssert(0, @"Error querying image.");
         }
-    } else {
-        NSAssert(0, @"Error querying image.");
-    }
-    [self closeDatabase];
+    });
+    dispatch_sync(_operationQueue, readBlock);
     NSString *path = nil;
     if (hash) {
         path = [self pathForImageWithHash:hash];
@@ -198,6 +218,7 @@
 #pragma mark - Life cycle
 
 static RWebImageController *_sharedController = nil;
+static dispatch_queue_t _operationQueue;
 
 + (RWebImageController *)sharedController
 {
@@ -212,8 +233,19 @@ static RWebImageController *_sharedController = nil;
     self = [super init];
     if (self) {
         self.mode = RWebImageControllerModeDefault;
+        _operationQueue = dispatch_queue_create("com.seymourdev.rwebimage.sqlite", NULL);
+        [self createDirectory];
+        [self loadDatabase];
+        [self createTable];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    dispatch_release(_operationQueue);
+    [self closeDatabase];
+    [super dealloc];
 }
 
 @end
