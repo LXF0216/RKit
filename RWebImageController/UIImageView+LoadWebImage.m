@@ -26,7 +26,9 @@
 
 - (void)setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholderImage retryCount:(NSUInteger)retryCount
 {
-    self.image = placeholderImage;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.image = placeholderImage;
+    });
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSUInteger retry = 0; retry < retryCount; retry++) {
             UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL];
@@ -52,7 +54,9 @@
 
 - (void)setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholderImage forceRefresh:(BOOL)forceRefresh retryCount:(NSUInteger)retryCount
 {
-    self.image = placeholderImage;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.image = placeholderImage;
+    });
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (NSUInteger retry = 0; retry < retryCount; retry++) {
             UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL forceRefresh:forceRefresh];
