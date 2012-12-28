@@ -35,7 +35,9 @@
                     CATransition *animation = [CATransition animation];
                     animation.type = kCATransitionFade;
                     [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
-                    self.image = image;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.image = image;
+                    });
                 });
                 break;
             }
@@ -59,7 +61,9 @@
                     CATransition *animation = [CATransition animation];
                     animation.type = kCATransitionFade;
                     [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
-                    self.image = image;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.image = image;
+                    });
                 });
                 break;
             }
