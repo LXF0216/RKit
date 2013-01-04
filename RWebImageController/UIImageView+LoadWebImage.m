@@ -27,23 +27,23 @@
 - (void)setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholderImage retryCount:(NSUInteger)retryCount
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.image = placeholderImage;
-    });
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for (NSUInteger retry = 0; retry < retryCount; retry++) {
-            UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL];
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    CATransition *animation = [CATransition animation];
-                    animation.type = kCATransitionFade;
-                    [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
+        if (placeholderImage) {
+            self.image = placeholderImage;
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            for (NSUInteger retry = 0; retry < retryCount; retry++) {
+                UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL];
+                if (image) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        CATransition *animation = [CATransition animation];
+                        animation.type = kCATransitionFade;
+                        [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
                         self.image = image;
                     });
-                });
-                break;
+                    break;
+                }
             }
-        }
+        });
     });
 }
 
@@ -55,23 +55,23 @@
 - (void)setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholderImage forceRefresh:(BOOL)forceRefresh retryCount:(NSUInteger)retryCount
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.image = placeholderImage;
-    });
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        for (NSUInteger retry = 0; retry < retryCount; retry++) {
-            UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL forceRefresh:forceRefresh];
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    CATransition *animation = [CATransition animation];
-                    animation.type = kCATransitionFade;
-                    [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
+        if (placeholderImage) {
+            self.image = placeholderImage;
+        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            for (NSUInteger retry = 0; retry < retryCount; retry++) {
+                UIImage *image = [[RWebImageController sharedController] getImageFromURL:imageURL forceRefresh:forceRefresh];
+                if (image) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        CATransition *animation = [CATransition animation];
+                        animation.type = kCATransitionFade;
+                        [self.layer addAnimation:animation forKey:kRWebImageLoadAnimationKey];
                         self.image = image;
                     });
-                });
-                break;
+                    break;
+                }
             }
-        }
+        });
     });
 }
 
